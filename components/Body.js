@@ -7,8 +7,8 @@ export default class Body extends Component {
   render() {
     return (
       <View style={{ backgroundColor: 'red' }}>
-        <Content1/>
-        <Content2/>
+        <Content1 title={1}/>
+        <Content2 title={2}/>
       </View>
     )
   }

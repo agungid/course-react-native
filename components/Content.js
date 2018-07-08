@@ -5,7 +5,7 @@ export class Content1 extends Component{
   render() {
     return(
       <View>
-        <Text>Content Satu</Text>
+        <Text>Content { this.props.title }</Text>
       </View>
     )
   }
@@ -13,9 +13,10 @@ export class Content1 extends Component{
 
 export class Content2 extends Component {
   render() {
+    const title = this.props.title;
     return (
       <View>
-        <Text>Content Dua</Text>
+        <Text>Content { title }</Text>
       </View>
     )
   }

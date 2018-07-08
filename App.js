@@ -8,7 +8,7 @@ export default class App extends Component {
   render() {
     return(
       <View style={{ flex:1, justifyContent: 'center' }}>
-        <Header/>
+        <Header title="Header Todo List" bgColor="aqua" />
         <Body/>
       </View>
     )
