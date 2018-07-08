@@ -1,2 +1,2 @@
 # course-react-native
-Course react native KSL Pamekasan
+Source code is the result of the course in the community KSL Pamekasan 2018
