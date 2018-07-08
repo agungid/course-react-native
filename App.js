@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import Header from "./components/Header";
+import Body from "./components/Body";
 
-export default App = () => (
-  <View style={{ flex:1, justifyContent: 'center', alignItems: 'center' }}>
-    <Text>Hello KSL Pamekasan</Text>
-  </View>
-)
+export default class App extends Component {
+
+  render() {
+    return(
+      <View style={{ flex:1, justifyContent: 'center' }}>
+        <Header/>
+        <Body/>
+      </View>
+    )
+  }
+}
