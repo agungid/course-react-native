@@ -9,7 +9,7 @@ export default class Header extends Component {
 
     return(
       <View style={ styles.container }>
-        <Text>Todo List</Text>
+        <Text style={{ color: '#fff', fontSize:20 }}>Todo List</Text>
       </View>
     )
   }
@@ -17,8 +17,8 @@ export default class Header extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex:0.3,
-    paddingTop:20,
+    flex: 0.3,
+    padding: 12,
     backgroundColor: 'steelblue',
   }
 })

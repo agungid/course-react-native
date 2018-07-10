@@ -12,7 +12,6 @@ export default class App extends Component {
       <View style={ styles.container }>
         <Header />
         <Body/>
-        <Footer/>
       </View>
     )
   }
