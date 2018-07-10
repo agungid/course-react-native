@@ -1,25 +1,51 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-
-import Header from './components/Header';
-import Body from './components/Body';
-import Footer from './components/Footer';
+import { 
+  Container, Header, Content, Body, Text, Title, Left, Button,
+  Icon, List, ListItem, Right, CheckBox
+} from 'native-base';
 
 export default class App extends Component {
 
   render() {
     return(
-      <View style={ styles.container }>
-        <Header />
-        <Body/>
-      </View>
+      <Container>
+
+        <Header>
+          <Left>
+            <Button transparent>
+              <Icon name='menu' />
+            </Button>
+          </Left>
+          <Body>
+            <Title>Not To Do Lists</Title>
+          </Body>
+          <Right/>
+        </Header>
+
+        <Content>
+          <List>
+            <ListItem>
+              <CheckBox checked={ false } color="aqua" />
+              <Body>
+                <Text>Firts Item</Text>
+              </Body>
+            </ListItem>
+            <ListItem>
+              <CheckBox checked={true} color="red" />
+              <Body>
+                <Text>Second Item</Text>
+              </Body>
+            </ListItem>
+            <ListItem>
+              <CheckBox color="green" />
+              <Body>
+                <Text>Third Item</Text>
+              </Body>
+            </ListItem>
+          </List>
+        </Content>
+
+      </Container>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column'
-  }
-});
