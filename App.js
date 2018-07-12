@@ -6,7 +6,20 @@ import {
 
 export default class App extends Component {
 
-  todos = [ 'First Item', 'Second Item', 'Third Item' ];
+  todos = [
+    {
+      id: 1,
+      note: 'First Item'
+    },
+    {
+      id: 2,
+      note: 'Second Item '
+    },
+    {
+      id: 3,
+      note: 'Third Item'
+    }
+  ];
 
   render() {
     return(
@@ -26,11 +39,11 @@ export default class App extends Component {
 
         <Content>
           <List>
-            { this.todos.map((todo, i) => (
-              <ListItem key={i} >
-                <CheckBox />
+            { this.todos.map((todo) => (
+              <ListItem key={todo.id} >
+                <CheckBox value={ todo.id } />
                 <Body>
-                  <Text>{ todo }</Text>
+                  <Text>{ todo.note }</Text>
                 </Body>
               </ListItem>
             ))}
