@@ -21,6 +21,17 @@ export default class App extends Component {
     }
   ];
 
+  renderItem(todo) {
+    return (
+      <ListItem key={todo.id} >
+        <CheckBox value={todo.id} />
+        <Body>
+          <Text>{todo.note}</Text>
+        </Body>
+      </ListItem>
+    )
+  }
+
   render() {
     return(
       <Container>
@@ -39,14 +50,7 @@ export default class App extends Component {
 
         <Content>
           <List>
-            { this.todos.map((todo) => (
-              <ListItem key={todo.id} >
-                <CheckBox value={ todo.id } />
-                <Body>
-                  <Text>{ todo.note }</Text>
-                </Body>
-              </ListItem>
-            ))}
+            { this.todos.map((todo) => this.renderItem(todo))}
           </List>
         </Content>
 
