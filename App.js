@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { 
   Container, Header, Content, Body, Text, Title, Left, Button,
-  Icon, List, ListItem, Right, CheckBox
+  Icon, List, Right
 } from 'native-base';
+
+import TodoItem from "./components/TodoItem";
 
 export default class App extends Component {
 
@@ -20,17 +22,6 @@ export default class App extends Component {
       note: 'Third Item'
     }
   ];
-
-  renderItem(todo) {
-    return (
-      <ListItem key={todo.id} >
-        <CheckBox value={todo.id} />
-        <Body>
-          <Text>{todo.note}</Text>
-        </Body>
-      </ListItem>
-    )
-  }
 
   render() {
     return(
@@ -50,7 +41,7 @@ export default class App extends Component {
 
         <Content>
           <List>
-            { this.todos.map((todo) => this.renderItem(todo))}
+            {this.todos.map((todo) => <TodoItem todo={todo} key={todo.id} />)}
           </List>
         </Content>
 
