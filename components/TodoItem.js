@@ -7,7 +7,7 @@ export default class TodoItem extends Component {
   render() {
     let {todo:{ id, note }} = this.props
     return(
-      <ListItem>
+      <ListItem key={id}>
         <CheckBox value={id} />
         <Body>
           <Text>{note}</Text>
