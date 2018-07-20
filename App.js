@@ -26,11 +26,12 @@ export default class App extends Component {
     })
 
     this.setState({
-      todos: todos,
-      count: count
+      // todos: todos,
+      // count: count
+      todos,
+      count
     })
 
-    console.log(todos)
   }
 
   render() {
