@@ -9,10 +9,58 @@ import TodoItem from "./components/TodoItem";
 
 export default class App extends Component {
 
-  state = {
-    count: 0,
-    todos: []
+  // ################ Lifesycle ###############
+  //Constructor akan dijalankan saat instance class
+  constructor(){
+    super();
+    console.log('Construct');
+
+    this.state = {
+      count: 0,
+      todos: [{
+        id: 1,
+        note: 'Todo Item #1'
+      }],
+      update: true,
+    }
   }
+
+  //Method/Event yang akan dieksekusi saat komponent dibuat dan sebelum methode render dibuat
+  componentWillMount(){
+    console.log('componentWillMount');
+    count = this.state.todos.length;
+
+    this.setState({
+      count
+    })
+  }
+
+  //Method/Event yang akan di eksekusi saat komponent dibuat, namun dijalankan setelah methode render
+  componentDidMount(){
+    console.log('componentDidMount');
+  }
+
+  //Method Akan dijalankan saat ada update perbahan pada props
+  componentWillReceiveProps(newProps) {
+    console.log('componentWillReceiveProps')
+  }
+
+  // Akan dijalankan saat sebelum component update
+  // Method ini merupakan penentu apakah sebuah komponen akan di-render ulang atau tidak.
+  shouldComponentUpdate(newProps, newState) {
+    console.log("shouldComponentUpdate running!!!");
+    
+    //cek update component
+    if(newState.update) {
+      return true;
+      console.log('Component update');
+    } else {     
+      return false;
+      console.log('Dont update component!!');
+    }
+  }
+
+  //############ Method ################
 
   _keyExtractor = (item, index) => item.id.toString();
 
@@ -26,12 +74,26 @@ export default class App extends Component {
     })
 
     this.setState({
-      // todos: todos,
-      // count: count
       todos,
       count
     })
 
+  }
+
+  handleNotUpdateComponent() {
+    update = this.state.update;
+
+    if(this.state.update){
+      update = false
+    } else {
+      update = true
+    }
+
+    this.setState({
+      update
+    })
+
+    alert("ShouldComponentUpdate: return "+update);
   }
 
   render() {
@@ -66,6 +128,12 @@ export default class App extends Component {
           style={{ backgroundColor: '#5067FF' }}
           position="bottomRight"
           onPress={() => this.handleIncTodo() }>
+          <Icon name="add" />
+        </Fab>
+        <Fab
+          style={{ backgroundColor: 'red' }}
+          position="bottomLeft"
+          onPress={() => this.handleNotUpdateComponent()}>
           <Icon name="add" />
         </Fab>
 
