@@ -4,32 +4,40 @@ import PropTypes from 'prop-types';
 
 export default class TodoItem extends Component {
 
-  //Akan dijalankan saat ada update perbahan pada props
-  componentWillReceiveProps(newProps) {
-    console.log("componentWillReceiveProps from TodoItem Component");
+  constructor() {
+    super();
+    this.state = {
+      checked: false
+    }
   }
 
-  // akan dieksekusi jika method shouldComponenUpdate mengembalikan nilai true
-  componentWillUpdate(nextProps, netxState) {
-    console.log("componentWillUpdate is running!!");
-  }
+  handleChecked(event, id) {
+    alert(id)
+    
+    let checked = this.state.checked;
+    
+    if (checked){
+      checked = false;
+    } else {
+      checked = true;
+    }
 
-  // Even ini akan di eksekusi saat method render update selesai dijalankan. 
-  // Event ini mirip dengan componentDidMount
-  componentDidUpdate(prevProps, prevState) {
-    console.log("Component did update!!!!!");
-  }
-
-  //Method ini akan dieksekusi sebelum komponen dihapus atau dihilangkan dari DOM
-  componentWillUnmount() {
-    console.log("ComponentWillUnmount running..!!")
+    this.setState({
+      checked
+    })
   }
 
   render() {
-    let {todo:{ id, note }} = this.props
+    const {todo:{ id, note }} = this.props;
+    const { checked } = this.state;
+
     return(
       <ListItem key={id}>
-        <CheckBox value={id} />
+        <CheckBox 
+          key={id}
+          checked={checked}
+          onPress={(event) => this.handleChecked(event, id)}
+        />
         <Body>
           <Text>{note}</Text>
         </Body>
